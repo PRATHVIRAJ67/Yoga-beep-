@@ -8,7 +8,7 @@ export default function App() {
   
   const beepTimes = [2 * 60, 4 * 60, 10 * 60, 17 * 60, 27 * 60]; // seconds
 
-  // Timer effect
+  
   useEffect(() => {
     let interval;
     if (running) {
@@ -19,7 +19,7 @@ export default function App() {
     return () => clearInterval(interval);
   }, [running]);
 
-  // Beep check effect
+  
   useEffect(() => {
     if (beepTimes.includes(time) && !beepsPlayed.includes(time)) {
       playLoudBeep();
@@ -32,7 +32,7 @@ export default function App() {
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const frequencies = [800, 1000, 1200];
-      const duration = 3.5;
+      const duration = 4.5;
       
       frequencies.forEach((freq, index) => {
         setTimeout(() => {
@@ -75,7 +75,7 @@ export default function App() {
 
   const start = () => {
     setRunning(true);
-    // Enable audio context on user interaction
+    
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       audioCtx.resume();
@@ -104,16 +104,15 @@ export default function App() {
         : 'bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600'
     }`}>
       
-      {/* Animated background elements */}
+     
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-4 -left-4 w-96 h-96 bg-white opacity-5 rounded-full animate-pulse"></div>
         <div className="absolute -bottom-8 -right-8 w-80 h-80 bg-white opacity-5 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-white opacity-3 rounded-full animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="relative z-10 text-center w-full max-w-4xl mx-auto">
         
-        {/* Header */}
+        
         <div className="mb-6 sm:mb-8 lg:mb-12">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 animate-bounce">
             🧘 Yoga Timer
@@ -123,7 +122,7 @@ export default function App() {
           </p>
         </div>
 
-        {/* Main Timer Display */}
+        
         <div className={`mb-6 sm:mb-8 lg:mb-12 transition-all duration-300 ${
           isBeeping ? 'animate-pulse scale-110' : 'hover:scale-105'
         }`}>
@@ -135,7 +134,7 @@ export default function App() {
             </span>
           </div>
           
-          {/* Next beep indicator */}
+         
           {nextBeepTime && (
             <div className="text-sm sm:text-base md:text-lg opacity-75 mb-2">
               Next beep in: <span className="font-mono">{formatTime(nextBeepTime)}</span>
@@ -149,7 +148,7 @@ export default function App() {
           )}
         </div>
 
-        {/* Beep Timeline */}
+      
         <div className="mb-6 sm:mb-8 lg:mb-10">
           <div className="text-xs sm:text-sm md:text-base opacity-75 mb-3">Breathing Intervals</div>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
@@ -170,7 +169,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Control Buttons */}
+        
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-6 sm:mb-8">
           
           {!running ? (
@@ -197,7 +196,7 @@ export default function App() {
           </button>
         </div>
 
-        {/* Status Indicator */}
+       
         <div className={`transition-all duration-300 ${isBeeping ? 'opacity-100 scale-125' : 'opacity-0 scale-90'}`}>
           <div className="text-2xl sm:text-3xl md:text-4xl mb-2">🔔</div>
           <div className="text-lg sm:text-xl md:text-2xl font-bold">
@@ -215,7 +214,7 @@ export default function App() {
 
       </div>
 
-      {/* Floating particles for mobile and desktop */}
+      
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         {[...Array(6)].map((_, i) => (
           <div
